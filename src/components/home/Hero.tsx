@@ -34,13 +34,13 @@ export function Hero() {
         <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-ink-950/60 to-transparent" />
       </div>
 
-      <div className="container-page relative pb-10 pt-[calc(var(--header-h)+6rem)] md:pb-14">
+      <div className="container-page relative pb-12 pt-[calc(var(--header-h)+6rem)] md:pb-20">
         <p className="motion-rise type-label text-white/70" style={stagger(0)}>
           {hero.eyebrow}
         </p>
 
         {/* Oversized name */}
-        <h1 id="hero-title" className="type-display mt-6 text-display text-white">
+        <h1 id="hero-title" className="type-display mt-8 text-display text-white">
           <span className="block overflow-hidden pb-[0.02em]">
             <span className="motion-mask block" style={stagger(1)}>
               {hero.firstName}
@@ -56,7 +56,7 @@ export function Hero() {
 
         {/* Bottom band: statement, copy, actions */}
         <div
-          className="motion-rise mt-10 grid gap-8 border-t border-white/15 pt-8 md:grid-cols-12 md:items-end md:gap-grid"
+          className="motion-rise mt-14 grid gap-8 border-t border-white/15 pt-10 md:grid-cols-12 md:items-end md:gap-grid"
           style={stagger(4)}
         >
           <p className="type-heading text-h3 text-white md:col-span-4">{hero.tagline}</p>

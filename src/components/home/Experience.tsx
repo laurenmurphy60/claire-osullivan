@@ -19,21 +19,21 @@ export function Experience() {
         </div>
 
         {/* Regions: oversized solid type */}
-        <ul className="mt-20 border-t border-line/15 md:mt-28">
+        <ul className="mt-24 border-t border-line/15 md:mt-36">
           {experience.regions.map((region, i) => (
             <Reveal as="li" key={region.name} index={i} className="group border-b border-line/15">
-              <div className="flex flex-col gap-2 py-6 md:flex-row md:items-end md:justify-between md:gap-10 md:py-8">
-                <p className="type-display text-[clamp(6rem,17vw,16rem)] text-strong transition-colors duration-slow ease-out group-hover:text-accent">
+              <div className="flex flex-col gap-2 py-8 md:flex-row md:items-end md:justify-between md:gap-10 md:py-12">
+                <p className="type-display text-[clamp(4rem,9vw,8.5rem)] text-strong transition-colors duration-slow ease-out group-hover:text-accent">
                   {region.name}
                 </p>
-                <p className="type-label pb-2 text-muted md:pb-6">{region.detail}</p>
+                <p className="type-label pb-2 text-muted md:pb-4">{region.detail}</p>
               </div>
             </Reveal>
           ))}
         </ul>
 
         {/* Numbers */}
-        <Reveal className="mt-16 md:mt-24">
+        <Reveal className="mt-24 md:mt-36">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <p className="type-label text-muted">Career numbers</p>
             <PlaceholderTag>Unverified, to be confirmed</PlaceholderTag>

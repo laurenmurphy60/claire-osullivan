@@ -44,6 +44,11 @@
   --color-rule: rgb(var(--line) / 0.14);
   --color-focus: rgb(var(--c-blue-400));
 
+  /* ── Photography grade ───────────────────────────────────────────── */
+  /* Applied to every photo: slightly muted colour, deeper contrast and a
+     touch of warmth, so shots from different games read as one set. */
+  --photo-filter: saturate(0.78) contrast(1.08) brightness(0.96) sepia(0.08);
+
   /* ── Typography: families (variables set by next/font in layout) ──── */
   --font-heading: var(--font-teko), "Arial Narrow", "Helvetica Neue", sans-serif;
   --font-body: var(--font-ubuntu), system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -114,7 +119,7 @@
   --duration-slow: 700ms;
   --duration-reveal: 1100ms;
   --duration-hero: 1200ms;
-  --duration-hero-image: 9s;
+  --duration-hero-image: 7s;
 
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);       /* expo-out: entrances */
@@ -123,7 +128,7 @@
 
   --stagger: 100ms;
   --reveal-distance: 2rem;
-  --parallax-strength: 0.18;  /* read by HeroMedia */
+  --parallax-strength: 0.28;  /* read by HeroMedia */
 
   color-scheme: dark;
 }

@@ -129,6 +129,11 @@
     background-size: 100% 1px;
   }
 
+  /* Shared photo grade (see --photo-filter in tokens.css) */
+  .photo-grade img {
+    filter: var(--photo-filter);
+  }
+
   /* Photo slot still waiting for its image */
   .media-placeholder {
     background-color: rgb(var(--c-ink-800));

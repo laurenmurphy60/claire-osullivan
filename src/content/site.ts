@@ -14,8 +14,8 @@ export const site = {
   description:
     "The official home of professional baseball player Claire O'Sullivan. Competitor, coach, always working towards the next level.",
   instagram: {
-    handle: "@[instagram-handle]", // PLACEHOLDER
-    url: "https://www.instagram.com/", // PLACEHOLDER: replace with profile URL
+    handle: "@claire.osullivan18",
+    url: "https://www.instagram.com/claire.osullivan18/",
   },
   contactEmail: "[enquiries@domain]", // PLACEHOLDER
 };

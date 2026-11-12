@@ -7,18 +7,30 @@
 /* ── Hero image: starts enlarged and slowly settles ───────────────── */
 @keyframes hero-settle {
   from {
-    transform: scale(1.16) translate3d(1.5%, 1%, 0);
-    filter: brightness(0.55);
+    transform: scale(1.22) translate3d(2.5%, 1.5%, 0);
+    filter: var(--photo-filter) brightness(0.55);
   }
   to {
     transform: scale(1.04) translate3d(0, 0, 0);
-    filter: brightness(1);
+    filter: var(--photo-filter);
+  }
+}
+
+/* After settling, the photo keeps drifting slowly (starts where settle ends) */
+@keyframes hero-drift {
+  from {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.12) translate3d(-1.5%, -1%, 0);
   }
 }
 
 .motion-hero-image {
   transform-origin: 60% 40%;
-  animation: hero-settle var(--duration-hero-image) var(--ease-cinematic) both;
+  animation:
+    hero-settle var(--duration-hero-image) var(--ease-cinematic) both,
+    hero-drift 22s ease-in-out var(--duration-hero-image) infinite alternate;
   will-change: transform;
 }
 

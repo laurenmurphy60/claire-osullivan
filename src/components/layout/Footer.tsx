@@ -59,7 +59,7 @@ export function Footer() {
               className="mt-5 inline-flex items-center gap-2 text-sm text-white/70 transition-colors duration-fast hover:text-blue-400"
             >
               <InstagramIcon className="h-4 w-4" />
-              Instagram
+              {site.instagram.handle}
             </a>
           </div>
         </div>

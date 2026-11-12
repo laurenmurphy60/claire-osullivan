@@ -39,7 +39,7 @@ export function Photo({
 }: Props) {
   const motion = `${zoom ? "hover-zoom" : ""} ${imgClassName}`;
   return (
-    <div className={`relative overflow-hidden bg-ink-800 ${className}`}>
+    <div className={`photo-grade relative overflow-hidden bg-ink-800 ${className}`}>
       {exists(src) ? (
         <Image
           src={src}

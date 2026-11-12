@@ -33,6 +33,14 @@ export function Social({ tone = "dark" }: { tone?: "dark" | "light" }) {
                 {social.cta}
               </span>
             </Button>
+            <a
+              href={site.instagram.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="type-label link-draw pb-1 text-fg transition-colors hover:text-accent"
+            >
+              {site.instagram.handle}
+            </a>
           </div>
         </Reveal>
 

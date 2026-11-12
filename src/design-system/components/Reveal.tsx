@@ -21,6 +21,9 @@ export function Reveal({ children, as: Tag = "div", index = 0, variant = "fade",
   const attr = variant === "image" ? "data-reveal-image" : "data-reveal";
 
   useEffect(() => {
+    // Tell the fail-safe in layout.tsx that reveals are running, so it
+    // doesn't unhide content. If this script never loads, content shows after 2s.
+    document.documentElement.classList.add("reveal-ready");
     const el = ref.current;
     if (!el) return;
     if (!("IntersectionObserver" in window)) {

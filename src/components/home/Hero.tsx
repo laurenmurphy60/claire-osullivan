@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { hero, site } from "@/content/site";
+import { hero } from "@/content/site";
 import { Button } from "@/design-system";
 import { Photo } from "@/design-system/components/Photo";
 import { HeroMedia } from "./HeroMedia";
@@ -35,12 +35,9 @@ export function Hero() {
       </div>
 
       <div className="container-page relative pb-10 pt-[calc(var(--header-h)+6rem)] md:pb-14">
-        <div className="motion-rise flex items-center justify-between" style={stagger(0)}>
-          <p className="type-label text-white/70">{hero.eyebrow}</p>
-          <p className="type-script hidden text-white/80 md:block" aria-hidden="true">
-            No. {site.number}
-          </p>
-        </div>
+        <p className="motion-rise type-label text-white/70" style={stagger(0)}>
+          {hero.eyebrow}
+        </p>
 
         {/* Oversized name */}
         <h1 id="hero-title" className="type-display mt-6 text-display text-white">

@@ -12,7 +12,7 @@ export function WideImage({ src, alt, label, caption }: Props) {
           src={src}
           alt={alt}
           label={label}
-          className="aspect-[4/5] w-full sm:aspect-[16/9] lg:aspect-[21/9]"
+          className="aspect-[4/5] w-full sm:aspect-[16/9]"
         />
       </Reveal>
     </section>

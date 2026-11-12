@@ -42,9 +42,9 @@ export const hero = {
   image: {
     src: "/images/claire-osullivan-hero.jpg",
     alt: "Claire O'Sullivan pitching in her blue number 18 uniform",
-    // CSS object-position. Tune once the photo is in so Claire's whole
-    // pitching motion stays clear of the headline (copy sits bottom-left).
-    objectPosition: "62% 35%",
+    // Tailwind object-position classes (mobile, then large screens), tuned so
+    // Claire's face stays clear of the headline. Must be literal class names.
+    objectPositionClass: "object-[48%_30%] lg:object-[62%_35%]",
   },
 };
 
@@ -163,16 +163,18 @@ export const enquiries = [
 export const images = {
   homeWide: {
     src: "/images/home-wide.jpg",
-    alt: "Claire O'Sullivan on the mound, wide shot of the field",
+    alt: "Claire O'Sullivan in her leg kick on the mound",
     label: "Full-width action photograph",
+    objectPosition: "48% 35%",
   },
   coaching: {
     src: "/images/coaching.jpg",
-    alt: "Claire O'Sullivan coaching a player",
+    alt: "Claire O'Sullivan driving through a swing at the plate",
     label: "Coaching photograph (portrait)",
+    objectPosition: "55% 40%",
   },
   nextUp: [
-    { src: "/images/next-up-competition.jpg", alt: "Upcoming competition", label: "Competition photograph" },
+    { src: "/images/next-up-competition.jpg", alt: "Claire O'Sullivan batting in front of the dugout", label: "Competition photograph", objectPosition: "45% 45%" },
     { src: "/images/next-up-media.jpg", alt: "Featured media", label: "Media photograph" },
     { src: "/images/next-up-partnership.jpg", alt: "Partnership announcement", label: "Partnership photograph" },
   ],

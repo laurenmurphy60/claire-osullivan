@@ -14,18 +14,21 @@ export function Hero() {
     >
       {/* Photograph: full bleed, the hero of the page */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
+        {/* On large screens the photo sits right so Claire clears the name */}
+        <div className="absolute inset-0 lg:left-[18%]">
         <HeroMedia>
           <Photo
             src={hero.image.src}
             alt={hero.image.alt}
             label="Hero photograph: the supplied pitching image"
             priority
-            objectPosition={hero.image.objectPosition}
             className="h-full w-full"
-            imgClassName="motion-hero-image"
+            imgClassName={`motion-hero-image ${hero.image.objectPositionClass}`}
             placeholderClassName="items-end pt-[calc(var(--header-h)+1rem)] md:p-10 md:pt-[calc(var(--header-h)+1.5rem)]"
           />
         </HeroMedia>
+        </div>
+        <div className="absolute inset-y-0 left-0 hidden w-[45%] bg-gradient-to-r from-ink-950 via-ink-950/70 to-transparent lg:block" />
         {/* Cinematic grade: dark floor for the name, clear upper frame */}
         <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/35 to-ink-950/0" />
         <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-ink-950/60 to-transparent" />

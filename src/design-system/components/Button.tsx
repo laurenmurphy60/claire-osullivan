@@ -6,7 +6,7 @@ type Variant = "primary" | "secondary" | "ghost";
 type Size = "md" | "lg";
 
 const base =
-  "group/btn inline-flex items-center justify-center gap-3 rounded-[var(--radius-pill)] font-body font-medium uppercase tracking-[var(--tracking-button)] transition-[background-color,color,border-color,transform] duration-base ease-out active:scale-[0.98]";
+  "group/btn inline-flex items-center justify-center gap-3 rounded-none font-body font-medium uppercase tracking-[var(--tracking-button)] transition-[background-color,color,border-color,transform] duration-base ease-out active:scale-[0.98]";
 
 const variants: Record<Variant, string> = {
   // Electric blue is reserved for the primary action

@@ -25,7 +25,6 @@ export function Coaching() {
             </Reveal>
             <Reveal index={1} className="max-w-[30rem]">
               <p className="type-lead text-fg/80">{coaching.copy}</p>
-              <p className="type-script mt-6 text-muted">One player at a time.</p>
             </Reveal>
           </div>
 

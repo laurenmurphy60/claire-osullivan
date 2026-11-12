@@ -65,15 +65,8 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Oversized wordmark */}
-      <div className="container-page mt-20 md:mt-28" aria-hidden="true">
-        <p className="type-display select-none whitespace-nowrap text-[clamp(4rem,19vw,20rem)] text-white">
-          O&rsquo;Sullivan<span className="text-blue-500">{site.number}</span>
-        </p>
-      </div>
-
       <div className="container-page pb-8">
-        <div className="flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-muted sm:flex-row sm:justify-between">
+        <div className="mt-20 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-muted sm:flex-row sm:justify-between">
           <p>
             &copy; {year} {site.name}. All rights reserved.
           </p>

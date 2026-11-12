@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { nav, site } from "@/content/site";
+import { hero, nav, site } from "@/content/site";
 import { InstagramIcon } from "@/design-system";
 import { Wordmark } from "./Wordmark";
 
@@ -77,7 +77,7 @@ export function Footer() {
           <p>
             &copy; {year} {site.name}. All rights reserved.
           </p>
-          <p>Built to compete.</p>
+          <p>{hero.tagline}</p>
         </div>
       </div>
     </footer>

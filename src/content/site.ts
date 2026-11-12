@@ -32,7 +32,7 @@ export const hero = {
   eyebrow: "Professional baseball player",
   firstName: "Claire",
   lastName: "O'Sullivan",
-  tagline: "Built to compete.",
+  tagline: "Set the standard.",
   // Alternatives from the brief:
   // "Different game. Same drive."
   // "Built for the big moments."

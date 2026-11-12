@@ -34,7 +34,7 @@ export default function AboutPage() {
           </Reveal>
           <Reveal className="lg:col-span-6 lg:col-start-7 lg:pt-24">
             <Eyebrow>The story</Eyebrow>
-            <h2 className="type-display mt-6 text-h2 text-strong">Where it started</h2>
+            <h2 className="type-display mt-8 text-h2 text-strong">Where it started</h2>
             <div className="mt-10 space-y-6 text-lg text-muted">
               <p className="type-lead text-fg">
                 [Placeholder biography: where Claire grew up, how she found baseball and the path that led her to the professional game.]
@@ -55,18 +55,18 @@ export default function AboutPage() {
         <div className="container-page">
           <Reveal>
             <Eyebrow>What matters</Eyebrow>
-            <h2 className="type-display mt-6 text-h2 text-strong">On and off the field</h2>
+            <h2 className="type-display mt-8 text-h2 text-strong">On and off the field</h2>
           </Reveal>
-          <ol className="mt-16 border-t border-line/15">
+          <ol className="mt-20 border-t md:mt-28 border-line/15">
             {values.map((v, i) => (
               <Reveal
                 as="li"
                 key={v.title}
                 index={i}
-                className="grid gap-4 border-b border-line/15 py-10 md:grid-cols-[5rem_1fr_1fr] md:items-baseline md:gap-10"
+                className="grid gap-4 border-b border-line/15 py-12 md:py-14 md:grid-cols-[5rem_1fr_1fr] md:items-baseline md:gap-10"
               >
                 <span className="type-label text-accent">0{i + 1}</span>
-                <h3 className="type-display text-h2 text-strong">{v.title}</h3>
+                <h3 className="type-display text-h3 text-strong">{v.title}</h3>
                 <p className="text-lg text-muted">{v.copy}</p>
               </Reveal>
             ))}

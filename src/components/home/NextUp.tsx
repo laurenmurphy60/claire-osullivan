@@ -13,14 +13,14 @@ export function NextUp() {
         <Reveal className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <Eyebrow index="03">{nextUp.eyebrow}</Eyebrow>
-            <h2 id="nextup-title" className="type-display mt-6 text-h2 text-strong">
+            <h2 id="nextup-title" className="type-display mt-8 text-h2 text-strong">
               {nextUp.heading}
             </h2>
           </div>
           <PlaceholderTag>Dummy content</PlaceholderTag>
         </Reveal>
 
-        <div className="mt-16 grid gap-x-grid gap-y-16 lg:grid-cols-12">
+        <div className="mt-20 grid gap-x-grid gap-y-20 md:mt-28 lg:grid-cols-12">
           {/* Feature: large image */}
           <Reveal className="lg:col-span-8">
             <Link href={feature.href} className="group block">

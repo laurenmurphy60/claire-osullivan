@@ -14,7 +14,7 @@ export function Coaching() {
           <div className="flex flex-col justify-between gap-12 lg:col-span-7">
             <Reveal>
               <Eyebrow index="02">{coaching.eyebrow}</Eyebrow>
-              <h2 id="coaching-title" className="type-display mt-6 text-h2 text-strong">
+              <h2 id="coaching-title" className="type-display mt-8 text-h2 text-strong">
                 {words.map((word, i) => (
                   <span key={word} className={`block ${i === words.length - 1 ? "text-accent" : ""}`}>
                     {word}
@@ -39,14 +39,14 @@ export function Coaching() {
             <Reveal as="li" key={d.name} index={i}>
               <Link
                 href="/coaching"
-                className="group relative grid grid-cols-[2.5rem_1fr_auto] items-center gap-x-4 gap-y-2 border-b border-line/15 py-8 md:grid-cols-[5rem_1fr_1fr_auto] md:gap-x-10 md:py-12"
+                className="group relative grid grid-cols-[2.5rem_1fr_auto] items-center gap-x-4 gap-y-2 border-b border-line/15 py-10 md:grid-cols-[5rem_1fr_1fr_auto] md:gap-x-12 md:py-14"
               >
                 <span
                   aria-hidden="true"
                   className="absolute bottom-[-1px] left-0 h-px w-full origin-left scale-x-0 bg-blue-500 transition-transform duration-slow ease-out group-hover:scale-x-100"
                 />
                 <span className="type-label text-accent">{d.number}</span>
-                <span className="type-display text-h2 text-strong transition-transform duration-slow ease-out group-hover:translate-x-3">
+                <span className="type-display text-h3 text-strong transition-transform duration-slow ease-out group-hover:translate-x-3">
                   {d.name}
                 </span>
                 <span className="col-span-full col-start-2 max-w-md text-base text-muted md:col-span-1 md:col-start-3 md:text-lg">

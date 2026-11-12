@@ -9,7 +9,7 @@ export function Experience() {
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-grid">
           <Reveal className="lg:col-span-8">
             <Eyebrow index="01">{experience.eyebrow}</Eyebrow>
-            <h2 id="experience-title" className="type-display mt-6 text-h2 text-strong">
+            <h2 id="experience-title" className="type-display mt-8 text-h2 text-strong">
               {experience.heading}
             </h2>
           </Reveal>
@@ -23,7 +23,7 @@ export function Experience() {
           {experience.regions.map((region, i) => (
             <Reveal as="li" key={region.name} index={i} className="group border-b border-line/15">
               <div className="flex flex-col gap-2 py-8 md:flex-row md:items-end md:justify-between md:gap-10 md:py-12">
-                <p className="type-display text-[clamp(4rem,9vw,8.5rem)] text-strong transition-colors duration-slow ease-out group-hover:text-accent">
+                <p className="type-display text-[clamp(3rem,5vw,5.5rem)] text-strong transition-colors duration-slow ease-out group-hover:text-accent">
                   {region.name}
                 </p>
                 <p className="type-label pb-2 text-muted md:pb-4">{region.detail}</p>
@@ -42,7 +42,7 @@ export function Experience() {
             {experience.stats.map((stat) => (
               <div key={stat.label} className="flex flex-col-reverse justify-end border-t border-line/15 pt-6">
                 <dt className="type-label mt-3 text-muted">{stat.label}</dt>
-                <dd className="type-display text-h1 text-strong">{stat.value}</dd>
+                <dd className="type-display text-h3 text-strong">{stat.value}</dd>
               </div>
             ))}
           </dl>

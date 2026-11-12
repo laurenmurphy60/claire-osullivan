@@ -114,7 +114,7 @@ export function Header() {
                   <Link
                     href={item.href}
                     aria-current={isActive(item.href) ? "page" : undefined}
-                    className="type-display flex items-baseline justify-between py-4 text-h2 text-white aria-[current=page]:text-blue-400"
+                    className="type-display flex items-baseline justify-between py-5 text-h3 text-white aria-[current=page]:text-blue-400"
                   >
                     {item.label}
                     <span className="type-label text-white/40">0{i + 1}</span>

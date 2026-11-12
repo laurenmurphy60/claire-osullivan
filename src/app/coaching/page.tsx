@@ -34,7 +34,7 @@ export default function CoachingPage() {
           <Reveal className="flex flex-wrap items-end justify-between gap-6">
             <div>
               <Eyebrow>Sessions</Eyebrow>
-              <h2 className="type-display mt-6 text-h2 text-strong">How it works</h2>
+              <h2 className="type-display mt-8 text-h2 text-strong">How it works</h2>
             </div>
             <PlaceholderTag>Formats and pricing to be confirmed</PlaceholderTag>
           </Reveal>

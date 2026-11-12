@@ -21,11 +21,11 @@ export function Social({ tone = "dark" }: { tone?: "dark" | "light" }) {
       <div className="container-page relative grid gap-14 lg:grid-cols-12 lg:gap-grid">
         <Reveal className="flex flex-col lg:col-span-4">
           <Eyebrow index="04">Instagram</Eyebrow>
-          <h2 id="social-title" className="type-display mt-6 text-h2 text-strong">
+          <h2 id="social-title" className="type-display mt-8 text-h2 text-strong">
             {social.heading.replace(".", "")}
             <span aria-hidden="true" className="text-blue-500">.</span>
           </h2>
-          <p className="type-lead mt-8 text-muted">{social.copy}</p>
+          <p className="type-lead mt-10 text-muted">{social.copy}</p>
           <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
             <Button href={site.instagram.url} size="lg">
               <span className="inline-flex items-center gap-3">

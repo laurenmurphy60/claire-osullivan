@@ -32,7 +32,7 @@ export default function ContactPage() {
                 <div id={e.id} className="grid gap-4 md:grid-cols-[4rem_1fr]">
                   <span className="type-label pt-3 text-accent">0{i + 1}</span>
                   <div>
-                    <h2 className="type-display text-h2 text-strong">{e.title}</h2>
+                    <h2 className="type-display text-h3 text-strong">{e.title}</h2>
                     <p className="mt-4 max-w-lg text-lg text-muted">{e.copy}</p>
                   </div>
                 </div>

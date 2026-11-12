@@ -1,49 +1,72 @@
-import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
-import { Nav } from "@/components/Nav";
-import { Footer } from "@/components/Footer";
-import { UnlockProvider } from "@/components/UnlockProvider";
+import type { Metadata, Viewport } from "next";
+import { Caveat, Teko, Ubuntu } from "next/font/google";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { site } from "@/content/site";
 import "./globals.css";
 
-const display = DM_Sans({
+const teko = Teko({
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-teko",
   weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
+  display: "swap",
 });
 
-const body = DM_Sans({
+const ubuntu = Ubuntu({
   subsets: ["latin"],
-  variable: "--font-body",
-  weight: ["400", "500", "600"],
+  variable: "--font-ubuntu",
+  weight: ["300", "400", "500", "700"],
+  display: "swap",
 });
 
-const mono = DM_Sans({
+const caveat = Caveat({
   subsets: ["latin"],
-  variable: "--font-mono",
-  weight: ["400", "500"],
+  variable: "--font-caveat",
+  weight: ["600"],
+  display: "swap",
 });
+
+// Vercel provides the production hostname at build time. Replace with the
+// final custom domain once it exists.
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : "http://localhost:3000";
 
 export const metadata: Metadata = {
-  title: "Lauren Murphy — Design Leader",
-  description:
-    "Design leader focused on building teams, systems, and the strategy behind both.",
-  metadataBase: new URL("https://handovernotes.design"),
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: `${site.name} | Professional Baseball Player`,
+    template: `%s | ${site.name}`,
+  },
+  description: site.description,
+  openGraph: {
+    title: site.name,
+    description: site.description,
+    type: "website",
+  },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const viewport: Viewport = {
+  themeColor: "#071126",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
-      <body className="flex min-h-screen flex-col font-body antialiased">
-        <UnlockProvider>
-          <Nav />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </UnlockProvider>
+    <html
+      lang="en"
+      className={`${teko.variable} ${ubuntu.variable} ${caveat.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        {/* Enables JS-only reveal states so content is never hidden without JS */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
+      <body className="flex min-h-screen flex-col">
+        <Header />
+        <main id="main" className="flex-1">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

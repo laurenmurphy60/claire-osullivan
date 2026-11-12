@@ -1,0 +1,122 @@
+/*
+ * Claire O'Sullivan — design tokens
+ * ---------------------------------
+ * Single source of truth for colour, type, spacing and motion.
+ * Tailwind (tailwind.config.ts) reads these variables, so changing a value
+ * here updates every component.
+ *
+ * Core palette colours are stored as space-separated RGB channels so Tailwind
+ * opacity modifiers work (e.g. `bg-navy-900/80`).
+ */
+
+:root {
+  /* ── Colour: core palette ─────────────────────────────────────────── */
+  --c-navy-950: 4 10 24;      /* deepest midnight — page ground */
+  --c-navy-900: 7 17 38;      /* midnight navy — primary background */
+  --c-navy-800: 12 28 61;     /* raised surfaces */
+  --c-navy-700: 20 43 89;     /* borders on dark, hover surfaces */
+  --c-blue-600: 22 92 214;    /* athletic blue — deep */
+  --c-blue-500: 36 112 240;   /* athletic blue — primary accent */
+  --c-blue-400: 84 148 255;   /* athletic blue — light, on-dark links */
+  --c-ice-300: 158 211 255;   /* ice blue — highlights */
+  --c-ice-100: 220 240 255;   /* ice blue — pale */
+  --c-white: 255 255 255;
+  --c-offwhite: 243 245 248;
+  --c-charcoal: 28 31 38;
+  --c-neutral-400: 142 152 172;
+  --c-neutral-600: 92 102 124;
+
+  /* ── Colour: semantic roles ───────────────────────────────────────── */
+  --color-bg: rgb(var(--c-navy-900));
+  --color-bg-deep: rgb(var(--c-navy-950));
+  --color-surface: rgb(var(--c-navy-800));
+  --color-accent: rgb(var(--c-blue-500));
+  --color-highlight: rgb(var(--c-ice-300));
+  --color-text: rgb(var(--c-offwhite));
+  --color-text-muted: rgb(var(--c-neutral-400));
+  --color-rule: rgb(var(--c-white) / 0.14);
+  --color-focus: rgb(var(--c-ice-300));
+
+  /* ── Typography: families (variables set by next/font in layout) ──── */
+  --font-heading: var(--font-teko), "Arial Narrow", "Helvetica Neue", sans-serif;
+  --font-body: var(--font-ubuntu), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-script: var(--font-caveat), "Bradley Hand", cursive;
+
+  /* ── Typography: scale (fluid, mobile → desktop) ──────────────────── */
+  --text-2xs: 0.6875rem;                          /* 11px labels */
+  --text-xs: 0.75rem;                             /* 12px */
+  --text-sm: 0.875rem;                            /* 14px */
+  --text-base: 1rem;                              /* 16px body */
+  --text-lg: clamp(1.0625rem, 0.4vw + 1rem, 1.25rem);
+  --text-xl: clamp(1.25rem, 0.8vw + 1rem, 1.5rem);
+  --text-h4: clamp(1.75rem, 1.4vw + 1.25rem, 2.25rem);
+  --text-h3: clamp(2.25rem, 2.4vw + 1.5rem, 3.25rem);
+  --text-h2: clamp(3rem, 4.5vw + 1.5rem, 5.5rem);
+  --text-h1: clamp(4rem, 9vw + 1rem, 10rem);
+  --text-display: clamp(5rem, 14vw, 15rem);       /* footer wordmark, big type */
+  --text-script: clamp(1.75rem, 1.6vw + 1.2rem, 2.5rem);
+
+  /* ── Typography: weights ──────────────────────────────────────────── */
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ── Typography: line heights ─────────────────────────────────────── */
+  --leading-display: 0.82;   /* Teko sits high; tight stacking */
+  --leading-heading: 0.9;
+  --leading-snug: 1.3;
+  --leading-body: 1.65;
+
+  /* ── Typography: letter spacing ───────────────────────────────────── */
+  --tracking-display: 0.005em;
+  --tracking-heading: 0.02em;
+  --tracking-label: 0.18em;
+  --tracking-button: 0.12em;
+
+  /* ── Spacing scale (4px base) ─────────────────────────────────────── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* ── Layout ───────────────────────────────────────────────────────── */
+  --container-max: 86rem;        /* 1376px */
+  --container-narrow: 48rem;
+  --gutter: clamp(1rem, 4vw, 3rem);         /* page side padding */
+  --grid-gap: clamp(1rem, 2vw, 2rem);       /* grid gutters */
+  --section-y: clamp(5rem, 10vw, 9rem);     /* vertical section rhythm */
+  --header-h: 4.5rem;
+  --radius-sm: 2px;
+  --radius-pill: 999px;
+
+  /* ── Motion ───────────────────────────────────────────────────────── */
+  --duration-instant: 120ms;
+  --duration-fast: 200ms;
+  --duration-base: 350ms;
+  --duration-slow: 700ms;
+  --duration-reveal: 900ms;
+  --duration-hero: 1200ms;
+  --duration-hero-image: 9s;
+
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);       /* expo-out: entrances */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-cinematic: cubic-bezier(0.25, 0.1, 0.1, 1); /* long hero image settle */
+
+  --stagger: 120ms;
+  --reveal-distance: 1.5rem;
+  --parallax-strength: 0.18;  /* read by HeroMedia */
+
+  color-scheme: dark;
+}

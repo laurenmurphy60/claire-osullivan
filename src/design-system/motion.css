@@ -1,0 +1,138 @@
+/*
+ * Motion primitives. Durations and easings come from tokens.css.
+ * Everything here collapses to an instant, static state under
+ * prefers-reduced-motion (see the block at the end).
+ */
+
+/* ── Hero image: starts enlarged and slowly settles ───────────────── */
+@keyframes hero-settle {
+  from {
+    transform: scale(1.16) translate3d(1.5%, 1%, 0);
+    filter: brightness(0.6);
+  }
+  to {
+    transform: scale(1.04) translate3d(0, 0, 0);
+    filter: brightness(1);
+  }
+}
+
+.motion-hero-image {
+  transform-origin: 60% 40%;
+  animation: hero-settle var(--duration-hero-image) var(--ease-cinematic) both;
+  will-change: transform;
+}
+
+/* ── Hero copy: restrained staggered entrance ─────────────────────── */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, var(--reveal-distance), 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes mask-in {
+  from {
+    clip-path: inset(0 0 100% 0);
+    transform: translate3d(0, 0.25em, 0);
+  }
+  to {
+    clip-path: inset(0 0 -10% 0);
+    transform: none;
+  }
+}
+
+.motion-rise {
+  animation: rise-in var(--duration-hero) var(--ease-out) both;
+  animation-delay: calc(400ms + var(--i, 0) * var(--stagger));
+}
+
+.motion-mask {
+  animation: mask-in var(--duration-hero) var(--ease-out) both;
+  animation-delay: calc(300ms + var(--i, 0) * var(--stagger));
+}
+
+/* Brushstroke draw-on */
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.motion-draw path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw var(--duration-reveal) var(--ease-in-out) forwards;
+  animation-delay: calc(900ms + var(--i, 0) * var(--stagger));
+}
+
+/* ── Scroll reveals (Reveal component) ────────────────────────────── */
+/* Only hide content when JS is running, so no-JS visitors see everything. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-distance), 0);
+  transition:
+    opacity var(--duration-reveal) var(--ease-out),
+    transform var(--duration-reveal) var(--ease-out);
+  transition-delay: calc(var(--i, 0) * var(--stagger));
+}
+
+.js [data-reveal="in"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Image reveal: a navy curtain lifts off the image */
+.js [data-reveal-image] {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path var(--duration-reveal) var(--ease-in-out);
+}
+
+.js [data-reveal-image="in"] {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Scroll cue */
+@keyframes scroll-cue {
+  0% { transform: scaleY(0); transform-origin: top; }
+  45% { transform: scaleY(1); transform-origin: top; }
+  55% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+.motion-scroll-cue {
+  animation: scroll-cue 2.4s var(--ease-in-out) infinite;
+}
+
+/* ── Reduced motion ───────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .motion-hero-image {
+    animation: none;
+    transform: scale(1.04);
+  }
+
+  .motion-scroll-cue {
+    animation: none;
+  }
+
+  .js [data-reveal],
+  .js [data-reveal-image] {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+  }
+}

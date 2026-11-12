@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { nav, site } from "@/content/site";
-import { BaseballMark, InstagramIcon, StitchRule } from "@/design-system";
+import { InstagramIcon } from "@/design-system";
 import { Wordmark } from "./Wordmark";
 
 const enquiryLinks = [
@@ -10,24 +10,22 @@ const enquiryLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
-const linkClass = "text-sm text-white/70 transition-colors duration-fast hover:text-ice-300";
+const linkClass = "link-draw text-sm text-white/70 transition-colors duration-fast hover:text-white";
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden border-t border-rule bg-navy-950">
-      <div className="container-page pt-20">
+    <footer className="tone-dark tone-deep relative overflow-hidden border-t border-white/10">
+      <div className="container-page pt-20 md:pt-28">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <Wordmark />
-            <p className="mt-5 max-w-xs text-sm text-neutral-400">
-              Professional baseball player. Competitor. Coach.
-            </p>
+            <p className="mt-5 max-w-xs text-sm text-muted">Professional baseball player. Competitor. Coach.</p>
           </div>
 
           <nav aria-label="Footer" className="md:col-span-2">
-            <h2 className="type-label text-blue-400">Explore</h2>
+            <h2 className="type-label text-muted">Explore</h2>
             <ul className="mt-5 space-y-3">
               {nav.map((item) => (
                 <li key={item.href}>
@@ -40,7 +38,7 @@ export function Footer() {
           </nav>
 
           <div className="md:col-span-3">
-            <h2 className="type-label text-blue-400">Enquiries</h2>
+            <h2 className="type-label text-muted">Enquiries</h2>
             <ul className="mt-5 space-y-3">
               {enquiryLinks.map((item) => (
                 <li key={item.href}>
@@ -53,12 +51,12 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-2">
-            <h2 className="type-label text-blue-400">Social</h2>
+            <h2 className="type-label text-muted">Social</h2>
             <a
               href={site.instagram.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${linkClass} mt-5 inline-flex items-center gap-2`}
+              className="mt-5 inline-flex items-center gap-2 text-sm text-white/70 transition-colors duration-fast hover:text-blue-400"
             >
               <InstagramIcon className="h-4 w-4" />
               Instagram
@@ -68,16 +66,14 @@ export function Footer() {
       </div>
 
       {/* Oversized wordmark */}
-      <div className="container-page relative mt-20" aria-hidden="true">
-        <BaseballMark className="absolute right-[var(--gutter)] top-0 hidden h-28 w-28 text-blue-500/40 md:block" />
-        <p className="type-display type-outline select-none whitespace-nowrap text-[clamp(3rem,16vw,15rem)]">
-          O&rsquo;Sullivan <span className="text-blue-500/30 [-webkit-text-stroke:0]">{site.number}</span>
+      <div className="container-page mt-20 md:mt-28" aria-hidden="true">
+        <p className="type-display select-none whitespace-nowrap text-[clamp(4rem,19vw,20rem)] text-white">
+          O&rsquo;Sullivan<span className="text-blue-500">{site.number}</span>
         </p>
       </div>
 
       <div className="container-page pb-8">
-        <StitchRule className="mb-6" />
-        <div className="flex flex-col gap-2 text-xs text-neutral-400 sm:flex-row sm:justify-between">
+        <div className="flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-muted sm:flex-row sm:justify-between">
           <p>
             &copy; {year} {site.name}. All rights reserved.
           </p>

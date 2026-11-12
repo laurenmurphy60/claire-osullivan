@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/PageHeader";
-import { enquiries, site } from "@/content/site";
+import { enquiries, images, site } from "@/content/site";
 import { InstagramIcon, PlaceholderTag, Reveal } from "@/design-system";
 
 export const metadata: Metadata = { title: "Contact" };
@@ -12,27 +12,28 @@ export default function ContactPage() {
         eyebrow="Contact"
         title={
           <>
-            Get in <span className="text-ice-300">touch.</span>
+            Get in <span className="text-accent">touch.</span>
           </>
         }
         intro="Coaching, partnerships or media. Pick the right lane and Claire will come back to you."
+        image={images.contactLead}
       />
 
-      <section className="section-y">
-        <div className="container-page grid gap-16 lg:grid-cols-12">
-          <ol className="lg:col-span-7">
+      <section className="tone-light section-y">
+        <div className="container-page grid gap-16 lg:grid-cols-12 lg:gap-grid">
+          <ol className="border-t border-line/15 lg:col-span-7">
             {enquiries.map((e, i) => (
               <Reveal
                 as="li"
                 key={e.id}
                 index={i}
-                className="scroll-mt-[calc(var(--header-h)+2rem)] border-t border-rule py-10"
+                className="scroll-mt-[calc(var(--header-h)+2rem)] border-b border-line/15 py-10 md:py-12"
               >
                 <div id={e.id} className="grid gap-4 md:grid-cols-[4rem_1fr]">
-                  <span className="type-heading text-h4 text-blue-400">0{i + 1}</span>
+                  <span className="type-label pt-3 text-accent">0{i + 1}</span>
                   <div>
-                    <h2 className="type-display text-h3 text-white">{e.title}</h2>
-                    <p className="mt-3 max-w-lg text-neutral-400">{e.copy}</p>
+                    <h2 className="type-display text-h2 text-strong">{e.title}</h2>
+                    <p className="mt-4 max-w-lg text-lg text-muted">{e.copy}</p>
                   </div>
                 </div>
               </Reveal>
@@ -40,22 +41,22 @@ export default function ContactPage() {
           </ol>
 
           <Reveal className="lg:col-span-4 lg:col-start-9">
-            <div className="border-t border-blue-500 bg-navy-800/50 p-8">
-              <p className="type-label text-blue-400">Enquiries</p>
-              <p className="type-heading mt-4 break-words text-h4 text-white">{site.contactEmail}</p>
-              <div className="mt-4">
+            <div className="border-t-2 border-blue-500 pt-8">
+              <p className="type-label text-muted">Enquiries</p>
+              <p className="type-display mt-5 break-words text-h3 text-strong">{site.contactEmail}</p>
+              <div className="mt-5">
                 <PlaceholderTag>Contact details to be confirmed</PlaceholderTag>
               </div>
-              <p className="mt-6 text-sm text-neutral-400">
+              <p className="mt-8 text-sm text-muted">
                 A contact form can be added here once an email or form service is chosen.
               </p>
               <a
                 href={site.instagram.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="type-label mt-8 inline-flex items-center gap-3 text-ice-300 hover:text-white"
+                className="type-label mt-10 inline-flex items-center gap-3 text-fg transition-colors hover:text-accent"
               >
-                <InstagramIcon /> {site.instagram.handle}
+                <InstagramIcon /> <span className="link-draw">{site.instagram.handle}</span>
               </a>
             </div>
           </Reveal>

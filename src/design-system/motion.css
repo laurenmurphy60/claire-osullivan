@@ -8,7 +8,7 @@
 @keyframes hero-settle {
   from {
     transform: scale(1.16) translate3d(1.5%, 1%, 0);
-    filter: brightness(0.6);
+    filter: brightness(0.55);
   }
   to {
     transform: scale(1.04) translate3d(0, 0, 0);
@@ -55,20 +55,6 @@
   animation-delay: calc(300ms + var(--i, 0) * var(--stagger));
 }
 
-/* Brushstroke draw-on */
-@keyframes draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-.motion-draw path {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  animation: draw var(--duration-reveal) var(--ease-in-out) forwards;
-  animation-delay: calc(900ms + var(--i, 0) * var(--stagger));
-}
-
 /* ── Scroll reveals (Reveal component) ────────────────────────────── */
 /* Only hide content when JS is running, so no-JS visitors see everything. */
 .js [data-reveal] {
@@ -85,14 +71,38 @@
   transform: none;
 }
 
-/* Image reveal: a navy curtain lifts off the image */
+/* Image reveal: the frame opens upwards while the photo settles from a
+   slight zoom. The child is the photo frame (see Photo). */
 .js [data-reveal-image] {
-  clip-path: inset(100% 0 0 0);
-  transition: clip-path var(--duration-reveal) var(--ease-in-out);
+  clip-path: inset(18% 0 0 0);
+  opacity: 0;
+  transition:
+    clip-path var(--duration-reveal) var(--ease-in-out),
+    opacity 500ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * var(--stagger));
+}
+
+.js [data-reveal-image] > * {
+  transform: scale(1.08);
+  transition: transform 1800ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * var(--stagger));
 }
 
 .js [data-reveal-image="in"] {
   clip-path: inset(0 0 0 0);
+  opacity: 1;
+}
+
+.js [data-reveal-image="in"] > * {
+  transform: none;
+}
+
+/* Slow photo zoom on hover, used inside linked image frames */
+.hover-zoom {
+  transition: transform 1200ms var(--ease-out);
+}
+.group:hover .hover-zoom {
+  transform: scale(1.035);
 }
 
 /* Scroll cue */
@@ -130,9 +140,14 @@
   }
 
   .js [data-reveal],
-  .js [data-reveal-image] {
+  .js [data-reveal-image],
+  .js [data-reveal-image] > * {
     opacity: 1;
     transform: none;
     clip-path: none;
+  }
+
+  .group:hover .hover-zoom {
+    transform: none;
   }
 }

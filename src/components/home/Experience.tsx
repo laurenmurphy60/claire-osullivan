@@ -1,52 +1,52 @@
 import { experience } from "@/content/site";
-import { BaseballMark, PlaceholderTag, Reveal, SectionHeading } from "@/design-system";
+import { Eyebrow, PlaceholderTag, Reveal } from "@/design-system";
 
 export function Experience() {
   return (
-    <section aria-labelledby="experience-title" className="section-y relative overflow-hidden">
-      <div className="container-page grid gap-16 lg:grid-cols-12 lg:gap-grid">
-        <Reveal className="lg:col-span-5">
-          <SectionHeading
-            eyebrow={experience.eyebrow}
-            index="01"
-            title={<span id="experience-title">{experience.heading}</span>}
-            intro={experience.copy}
-          />
-        </Reveal>
-
-        {/* Oversized region type */}
-        <div className="lg:col-span-6 lg:col-start-7">
-          <ul className="border-t border-rule">
-            {experience.regions.map((region, i) => (
-              <Reveal as="li" key={region.name} index={i} className="group border-b border-rule">
-                <div className="flex items-center justify-between gap-6 py-6">
-                  <div>
-                    <p className="type-display type-outline text-[clamp(4.5rem,11vw,9rem)] transition-colors duration-slow ease-out group-hover:text-ice-300">
-                      {region.name}
-                    </p>
-                    <p className="mt-1 text-sm text-neutral-400">{region.detail}</p>
-                  </div>
-                  <BaseballMark className="h-14 w-14 shrink-0 text-blue-500 transition-transform duration-slow ease-out group-hover:rotate-[60deg] md:h-20 md:w-20" />
-                </div>
-              </Reveal>
-            ))}
-          </ul>
-
-          <Reveal index={2} className="mt-10">
-            <div className="flex items-center justify-between">
-              <p className="type-label text-neutral-400">Career numbers</p>
-              <PlaceholderTag>Unverified, to be confirmed</PlaceholderTag>
-            </div>
-            <dl className="mt-6 grid grid-cols-3 gap-grid">
-              {experience.stats.map((stat) => (
-                <div key={stat.label} className="flex flex-col-reverse border-l border-blue-500 pl-4">
-                  <dt className="type-label text-neutral-400">{stat.label}</dt>
-                  <dd className="type-display mb-2 text-h2 text-ice-300">{stat.value}</dd>
-                </div>
-              ))}
-            </dl>
+    <section aria-labelledby="experience-title" className="tone-light section-y relative overflow-hidden">
+      <div className="container-page">
+        {/* Statement: heading left, copy offset right */}
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-grid">
+          <Reveal className="lg:col-span-8">
+            <Eyebrow index="01">{experience.eyebrow}</Eyebrow>
+            <h2 id="experience-title" className="type-display mt-6 text-h2 text-strong">
+              {experience.heading}
+            </h2>
+          </Reveal>
+          <Reveal index={1} className="lg:col-span-4 lg:col-start-9 lg:self-end">
+            <p className="type-lead text-muted">{experience.copy}</p>
           </Reveal>
         </div>
+
+        {/* Regions: oversized solid type */}
+        <ul className="mt-20 border-t border-line/15 md:mt-28">
+          {experience.regions.map((region, i) => (
+            <Reveal as="li" key={region.name} index={i} className="group border-b border-line/15">
+              <div className="flex flex-col gap-2 py-6 md:flex-row md:items-end md:justify-between md:gap-10 md:py-8">
+                <p className="type-display text-[clamp(6rem,17vw,16rem)] text-strong transition-colors duration-slow ease-out group-hover:text-accent">
+                  {region.name}
+                </p>
+                <p className="type-label pb-2 text-muted md:pb-6">{region.detail}</p>
+              </div>
+            </Reveal>
+          ))}
+        </ul>
+
+        {/* Numbers */}
+        <Reveal className="mt-16 md:mt-24">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <p className="type-label text-muted">Career numbers</p>
+            <PlaceholderTag>Unverified, to be confirmed</PlaceholderTag>
+          </div>
+          <dl className="mt-8 grid grid-cols-3 gap-grid">
+            {experience.stats.map((stat) => (
+              <div key={stat.label} className="flex flex-col-reverse justify-end border-t border-line/15 pt-6">
+                <dt className="type-label mt-3 text-muted">{stat.label}</dt>
+                <dd className="type-display text-h1 text-strong">{stat.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
       </div>
     </section>
   );

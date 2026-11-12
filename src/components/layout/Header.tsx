@@ -48,13 +48,13 @@ export function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-slow ease-out ${
         scrolled || open
-          ? "border-b border-rule bg-navy-950/85 backdrop-blur-md"
-          : "border-b border-transparent bg-gradient-to-b from-navy-950/70 to-transparent"
+          ? "border-b border-white/10 bg-ink-950/90 backdrop-blur-md"
+          : "border-b border-transparent bg-transparent"
       }`}
     >
       <a
         href="#main"
-        className="type-label sr-only z-50 bg-ice-300 px-4 py-3 text-navy-900 focus:not-sr-only focus:absolute focus:left-4 focus:top-4"
+        className="type-label sr-only z-50 bg-blue-500 px-4 py-3 text-white focus:not-sr-only focus:absolute focus:left-4 focus:top-4"
       >
         Skip to content
       </a>
@@ -69,7 +69,7 @@ export function Header() {
                 <Link
                   href={item.href}
                   aria-current={isActive(item.href) ? "page" : undefined}
-                  className="type-label relative py-2 text-white/75 transition-colors duration-fast hover:text-white aria-[current=page]:text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-blue-500 after:transition-transform after:duration-base after:ease-out hover:after:scale-x-100 aria-[current=page]:after:scale-x-100"
+                  className="type-label relative py-2 text-white/65 transition-colors duration-fast hover:text-white aria-[current=page]:text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:bg-blue-500 after:transition-transform after:duration-base after:ease-out hover:after:scale-x-100 aria-[current=page]:after:scale-x-100"
                 >
                   {item.label}
                 </Link>
@@ -80,7 +80,7 @@ export function Header() {
             href={site.instagram.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white/75 transition-colors duration-fast hover:text-ice-300"
+            className="text-white/65 transition-colors duration-fast hover:text-blue-400"
           >
             <InstagramIcon title={`${site.name} on Instagram`} />
           </a>
@@ -105,19 +105,19 @@ export function Header() {
         <div
           id="mobile-menu"
           ref={panelRef}
-          className="container-page flex h-[calc(100svh-var(--header-h))] flex-col justify-between overflow-y-auto bg-navy-950 pb-10 pt-6 lg:hidden"
+          className="container-page flex h-[calc(100svh-var(--header-h))] flex-col justify-between overflow-y-auto bg-ink-950 pb-10 pt-6 lg:hidden"
         >
           <nav aria-label="Mobile">
-            <ul className="border-t border-rule">
+            <ul className="border-t border-white/10">
               {nav.map((item, i) => (
-                <li key={item.href} className="motion-rise border-b border-rule" style={{ ["--i" as string]: i - 3 }}>
+                <li key={item.href} className="motion-rise border-b border-white/10" style={{ ["--i" as string]: i - 3 }}>
                   <Link
                     href={item.href}
                     aria-current={isActive(item.href) ? "page" : undefined}
-                    className="type-display flex items-baseline justify-between py-4 text-h3 text-white aria-[current=page]:text-ice-300"
+                    className="type-display flex items-baseline justify-between py-4 text-h2 text-white aria-[current=page]:text-blue-400"
                   >
                     {item.label}
-                    <span className="type-label text-blue-400">0{i + 1}</span>
+                    <span className="type-label text-white/40">0{i + 1}</span>
                   </Link>
                 </li>
               ))}
@@ -131,7 +131,7 @@ export function Header() {
               href={site.instagram.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="type-label flex items-center justify-center gap-3 py-3 text-ice-300"
+              className="type-label flex items-center justify-center gap-3 py-3 text-white/70"
             >
               <InstagramIcon /> {site.instagram.handle}
             </a>

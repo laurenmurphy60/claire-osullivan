@@ -1,42 +1,52 @@
 import type { ReactNode } from "react";
-import { BaseballMark, Eyebrow, PlaceholderTag, StitchRule } from "@/design-system";
+import { Eyebrow, PlaceholderTag, Reveal } from "@/design-system";
+import { Photo } from "@/design-system/components/Photo";
 
-/** Shared header for inner pages. */
+type Image = { src: string; alt: string; label: string };
+
+/** Shared header for inner pages: oversized title band and a lead photograph. */
 export function PageHeader({
   eyebrow,
   title,
   intro,
+  image,
   placeholder = true,
 }: {
   eyebrow: string;
   title: ReactNode;
   intro?: ReactNode;
+  image?: Image;
   placeholder?: boolean;
 }) {
   return (
-    <header className="relative overflow-hidden bg-navy-950 pb-16 pt-[calc(var(--header-h)+5rem)] md:pb-20">
-      <BaseballMark className="pointer-events-none absolute -right-20 -top-10 h-96 w-96 text-blue-500/10" />
-      <div className="container-page relative">
+    <header className="tone-dark tone-deep relative overflow-hidden pt-[calc(var(--header-h)+5rem)] md:pt-[calc(var(--header-h)+7rem)]">
+      <div className="container-page">
         <div className="motion-rise" style={{ ["--i" as string]: -2 }}>
           <Eyebrow>{eyebrow}</Eyebrow>
         </div>
-        <h1 className="motion-rise type-display mt-6 max-w-5xl text-h1 text-white" style={{ ["--i" as string]: -1 }}>
+        <h1 className="motion-rise type-display mt-6 max-w-[14ch] text-h1 text-strong" style={{ ["--i" as string]: -1 }}>
           {title}
         </h1>
-        {intro && (
-          <p className="motion-rise mt-8 max-w-2xl text-lg text-white/75" style={{ ["--i" as string]: 0 }}>
-            {intro}
-          </p>
-        )}
-        {placeholder && (
-          <div className="mt-8">
-            <PlaceholderTag>Page in progress: dummy content</PlaceholderTag>
-          </div>
-        )}
+        <div
+          className="motion-rise mt-10 grid gap-6 border-t border-line/15 pt-8 md:grid-cols-12 md:gap-grid"
+          style={{ ["--i" as string]: 0 }}
+        >
+          {intro && <p className="type-lead text-fg/80 md:col-span-6 md:col-start-7">{intro}</p>}
+          {placeholder && (
+            <div className="md:col-span-4 md:row-start-1">
+              <PlaceholderTag>Page in progress: dummy content</PlaceholderTag>
+            </div>
+          )}
+        </div>
       </div>
-      <div className="container-page absolute inset-x-0 bottom-0">
-        <StitchRule />
-      </div>
+
+      {image ? (
+        <Reveal variant="image" className="mt-16 md:mt-24">
+          <Photo {...image} priority className="aspect-[4/3] w-full md:aspect-[21/9]" />
+        </Reveal>
+      ) : (
+        <div className="pb-16 md:pb-24" />
+      )}
     </header>
   );
 }

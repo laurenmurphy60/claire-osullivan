@@ -9,9 +9,8 @@ export function Wordmark({ className = "" }: { className?: string }) {
       className={`type-display group flex items-baseline gap-2 text-[1.75rem] leading-none text-white ${className}`}
     >
       <span>Claire</span>
-      <span className="text-ice-300 transition-colors duration-base group-hover:text-blue-400">
-        O&rsquo;Sullivan
-      </span>
+      <span className="text-white/55 transition-colors duration-base group-hover:text-white">O&rsquo;Sullivan</span>
+      <span aria-hidden="true" className="h-1.5 w-1.5 self-center rounded-full bg-blue-500" />
     </Link>
   );
 }

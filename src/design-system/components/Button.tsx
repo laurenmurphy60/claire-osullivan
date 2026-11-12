@@ -6,18 +6,20 @@ type Variant = "primary" | "secondary" | "ghost";
 type Size = "md" | "lg";
 
 const base =
-  "group/btn inline-flex items-center justify-center gap-3 rounded-[var(--radius-sm)] font-body font-medium uppercase tracking-[var(--tracking-button)] transition-[background-color,color,border-color,transform] duration-base ease-out active:translate-y-px";
+  "group/btn inline-flex items-center justify-center gap-3 rounded-[var(--radius-pill)] font-body font-medium uppercase tracking-[var(--tracking-button)] transition-[background-color,color,border-color,transform] duration-base ease-out active:scale-[0.98]";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-blue-500 text-white hover:bg-ice-300 hover:text-navy-900",
-  secondary:
-    "border border-white/40 text-white hover:border-ice-300 hover:bg-ice-300/10 hover:text-ice-300",
-  ghost: "px-0 text-ice-300 hover:text-white",
+  // Electric blue is reserved for the primary action
+  primary: "bg-blue-500 text-white hover:bg-blue-600",
+  // Outline that fills with the section's text colour on hover
+  secondary: "border border-line/35 text-strong hover:border-strong hover:bg-strong hover:text-canvas",
+  // Plain text link with a drawn underline
+  ghost: "px-0 text-strong",
 };
 
 const sizes: Record<Size, string> = {
-  md: "h-11 px-5 text-xs",
-  lg: "h-14 px-7 text-sm",
+  md: "h-11 px-6 text-xs",
+  lg: "h-14 px-8 text-sm",
 };
 
 type ButtonProps = {
@@ -42,7 +44,7 @@ export function Button({
   const classes = `${base} ${variants[variant]} ${variant === "ghost" ? "h-auto text-xs" : sizes[size]} ${className}`;
   const content = (
     <>
-      <span>{children}</span>
+      <span className={variant === "ghost" ? "link-draw pb-1" : ""}>{children}</span>
       {arrow && (
         <ArrowIcon className="h-4 w-4 transition-transform duration-base ease-out group-hover/btn:translate-x-1" />
       )}

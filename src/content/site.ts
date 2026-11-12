@@ -154,3 +154,35 @@ export const enquiries = [
     copy: "Interviews, features, appearances and speaking.",
   },
 ] as const;
+
+/*
+ * Photography slots. Drop each file into /public at its path and it replaces
+ * the labelled placeholder automatically (checked at build time). Alt text
+ * describes the intended shot; update it to match the real photograph.
+ */
+export const images = {
+  homeWide: {
+    src: "/images/home-wide.jpg",
+    alt: "Claire O'Sullivan on the mound, wide shot of the field",
+    label: "Full-width action photograph",
+  },
+  coaching: {
+    src: "/images/coaching.jpg",
+    alt: "Claire O'Sullivan coaching a player",
+    label: "Coaching photograph (portrait)",
+  },
+  nextUp: [
+    { src: "/images/next-up-competition.jpg", alt: "Upcoming competition", label: "Competition photograph" },
+    { src: "/images/next-up-media.jpg", alt: "Featured media", label: "Media photograph" },
+    { src: "/images/next-up-partnership.jpg", alt: "Partnership announcement", label: "Partnership photograph" },
+  ],
+  instagram: [1, 2, 3, 4, 5, 6].map((n) => ({
+    src: `/images/instagram-${n}.jpg`,
+    label: `Instagram photograph ${n}`,
+  })),
+  aboutLead: { src: "/images/about-lead.jpg", alt: "Claire O'Sullivan", label: "About: lead photograph" },
+  aboutPortrait: { src: "/images/about-portrait.jpg", alt: "Portrait of Claire O'Sullivan", label: "Portrait photograph" },
+  careerLead: { src: "/images/career-lead.jpg", alt: "Claire O'Sullivan pitching in competition", label: "Career: lead photograph" },
+  coachingLead: { src: "/images/coaching-lead.jpg", alt: "Claire O'Sullivan during a coaching session", label: "Coaching: lead photograph" },
+  contactLead: { src: "/images/contact-lead.jpg", alt: "Claire O'Sullivan", label: "Contact: lead photograph" },
+};

@@ -29,12 +29,8 @@ export function SectionHeading({
   return (
     <div className={className}>
       {eyebrow && <Eyebrow index={index}>{eyebrow}</Eyebrow>}
-      <Tag className={`type-display mt-5 text-white ${sizes[size]}`}>{title}</Tag>
-      {intro && (
-        <p className="mt-6 max-w-[38rem] text-lg leading-[var(--leading-body)] text-neutral-400">
-          {intro}
-        </p>
-      )}
+      <Tag className={`type-display mt-6 text-strong ${sizes[size]}`}>{title}</Tag>
+      {intro && <p className="type-lead mt-8 max-w-[36rem] text-muted">{intro}</p>}
     </div>
   );
 }

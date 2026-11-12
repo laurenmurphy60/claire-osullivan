@@ -14,8 +14,8 @@ export const site = {
   description:
     "The official home of professional baseball player Claire O'Sullivan. Competitor, coach, always working towards the next level.",
   instagram: {
-    handle: "@[instagram-handle]", // PLACEHOLDER
-    url: "https://www.instagram.com/", // PLACEHOLDER: replace with profile URL
+    handle: "@claire.osullivan18",
+    url: "https://www.instagram.com/claire.osullivan18/",
   },
   contactEmail: "[enquiries@domain]", // PLACEHOLDER
 };
@@ -32,7 +32,7 @@ export const hero = {
   eyebrow: "Professional baseball player",
   firstName: "Claire",
   lastName: "O'Sullivan",
-  tagline: "Built to compete.",
+  tagline: "Set the standard.",
   // Alternatives from the brief:
   // "Different game. Same drive."
   // "Built for the big moments."
@@ -42,9 +42,9 @@ export const hero = {
   image: {
     src: "/images/claire-osullivan-hero.jpg",
     alt: "Claire O'Sullivan pitching in her blue number 18 uniform",
-    // CSS object-position. Tune once the photo is in so Claire's whole
-    // pitching motion stays clear of the headline (copy sits bottom-left).
-    objectPosition: "62% 35%",
+    // Tailwind object-position classes (mobile, then large screens), tuned so
+    // Claire's face stays clear of the headline. Must be literal class names.
+    objectPositionClass: "object-[48%_30%] lg:object-[62%_35%]",
   },
 };
 
@@ -154,3 +154,37 @@ export const enquiries = [
     copy: "Interviews, features, appearances and speaking.",
   },
 ] as const;
+
+/*
+ * Photography slots. Drop each file into /public at its path and it replaces
+ * the labelled placeholder automatically (checked at build time). Alt text
+ * describes the intended shot; update it to match the real photograph.
+ */
+export const images = {
+  homeWide: {
+    src: "/images/home-wide.jpg",
+    alt: "Claire O'Sullivan in her leg kick on the mound",
+    label: "Full-width action photograph",
+    objectPosition: "48% 35%",
+  },
+  coaching: {
+    src: "/images/coaching.jpg",
+    alt: "Claire O'Sullivan driving through a swing at the plate",
+    label: "Coaching photograph (portrait)",
+    objectPosition: "55% 40%",
+  },
+  nextUp: [
+    { src: "/images/next-up-competition.jpg", alt: "Claire O'Sullivan batting in front of the dugout", label: "Competition photograph", objectPosition: "45% 45%" },
+    { src: "/images/next-up-media.jpg", alt: "Featured media", label: "Media photograph" },
+    { src: "/images/next-up-partnership.jpg", alt: "Partnership announcement", label: "Partnership photograph" },
+  ],
+  instagram: [1, 2, 3, 4, 5, 6].map((n) => ({
+    src: `/images/instagram-${n}.jpg`,
+    label: `Instagram photograph ${n}`,
+  })),
+  aboutLead: { src: "/images/about-lead.jpg", alt: "Claire O'Sullivan", label: "About: lead photograph" },
+  aboutPortrait: { src: "/images/about-portrait.jpg", alt: "Portrait of Claire O'Sullivan", label: "Portrait photograph" },
+  careerLead: { src: "/images/career-lead.jpg", alt: "Claire O'Sullivan pitching in competition", label: "Career: lead photograph" },
+  coachingLead: { src: "/images/coaching-lead.jpg", alt: "Claire O'Sullivan during a coaching session", label: "Coaching: lead photograph" },
+  contactLead: { src: "/images/contact-lead.jpg", alt: "Claire O'Sullivan", label: "Contact: lead photograph" },
+};

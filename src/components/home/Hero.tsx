@@ -1,103 +1,74 @@
-import fs from "node:fs";
-import path from "node:path";
-import Image from "next/image";
 import type { CSSProperties } from "react";
-import { hero, site } from "@/content/site";
-import { Brushstroke, Button, Eyebrow } from "@/design-system";
+import { hero } from "@/content/site";
+import { Button } from "@/design-system";
+import { Photo } from "@/design-system/components/Photo";
 import { HeroMedia } from "./HeroMedia";
-
-// Checked at build time. Until the supplied photograph is added at
-// public/images/claire-osullivan-hero.jpg, a labelled placeholder renders
-// instead, so no stock or generated image is ever substituted.
-const heroImageExists = fs.existsSync(path.join(process.cwd(), "public", hero.image.src));
 
 const stagger = (i: number) => ({ "--i": i }) as CSSProperties;
 
 export function Hero() {
   return (
-    <section aria-labelledby="hero-title" className="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-navy-950">
-      {/* Photograph */}
+    <section
+      aria-labelledby="hero-title"
+      className="tone-dark tone-deep relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden"
+    >
+      {/* Photograph: full bleed, the hero of the page */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
+        {/* On large screens the photo sits right so Claire clears the name */}
+        <div className="absolute inset-0 lg:left-[18%]">
         <HeroMedia>
-          {heroImageExists ? (
-            <Image
-              src={hero.image.src}
-              alt={hero.image.alt}
-              fill
-              priority
-              quality={85}
-              sizes="100vw"
-              className="motion-hero-image object-cover"
-              style={{ objectPosition: hero.image.objectPosition }}
-            />
-          ) : (
-            <div
-              role="img"
-              aria-label="Hero photograph to be added"
-              className="media-placeholder motion-hero-image flex h-full w-full items-start justify-end p-6 pt-[calc(var(--header-h)+1.5rem)] md:items-center md:p-10"
-            >
-              <p className="type-label max-w-[16rem] border border-dashed border-ice-300/40 p-4 text-right text-ice-300/80">
-                Hero photograph missing. Add the supplied pitching image at
-                <br />
-                <code className="normal-case tracking-normal">public{hero.image.src}</code>
-              </p>
-            </div>
-          )}
+          <Photo
+            src={hero.image.src}
+            alt={hero.image.alt}
+            label="Hero photograph: the supplied pitching image"
+            priority
+            className="h-full w-full"
+            imgClassName={`motion-hero-image ${hero.image.objectPositionClass}`}
+            placeholderClassName="items-end pt-[calc(var(--header-h)+1rem)] md:p-10 md:pt-[calc(var(--header-h)+1.5rem)]"
+          />
         </HeroMedia>
-        {/* Navy grade: keeps copy legible bottom-left, leaves Claire clear */}
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/30 to-navy-950/10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/85 via-navy-950/25 to-transparent md:via-transparent" />
+        </div>
+        <div className="absolute inset-y-0 left-0 hidden w-[45%] bg-gradient-to-r from-ink-950 via-ink-950/70 to-transparent lg:block" />
+        {/* Cinematic grade: dark floor for the name, clear upper frame */}
+        <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/35 to-ink-950/0" />
+        <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-ink-950/60 to-transparent" />
       </div>
 
-      <div className="container-page relative pb-16 pt-[calc(var(--header-h)+4rem)] md:pb-20">
-        <div className="max-w-[56rem]">
-          <div className="motion-rise" style={stagger(0)}>
-            <Eyebrow>{hero.eyebrow}</Eyebrow>
-          </div>
+      <div className="container-page relative pb-12 pt-[calc(var(--header-h)+6rem)] md:pb-20">
+        <p className="motion-rise type-label text-white/70" style={stagger(0)}>
+          {hero.eyebrow}
+        </p>
 
-          <h1 id="hero-title" className="type-display mt-6 text-h1 text-white">
-            <span className="block overflow-hidden pb-[0.04em]">
-              <span className="motion-mask block" style={stagger(1)}>
-                {hero.firstName}
-              </span>
+        {/* Oversized name */}
+        <h1 id="hero-title" className="type-display mt-8 text-display text-white">
+          <span className="block overflow-hidden pb-[0.02em]">
+            <span className="motion-mask block" style={stagger(1)}>
+              {hero.firstName}
             </span>
-            <span className="block overflow-hidden pb-[0.04em]">
-              <span className="motion-mask block text-ice-300" style={stagger(2)}>
-                {hero.lastName}
-              </span>
+          </span>
+          <span className="block overflow-hidden pb-[0.02em]">
+            <span className="motion-mask block" style={stagger(2)}>
+              {hero.lastName}
+              <span aria-hidden="true" className="text-blue-500">.</span>
             </span>
-          </h1>
+          </span>
+        </h1>
 
-          <p className="motion-rise relative mt-4 inline-block" style={stagger(3)}>
-            <span className="type-heading relative z-10 text-h3 text-white">{hero.tagline}</span>
-            <Brushstroke className="motion-draw absolute -bottom-2 left-0 -z-0 h-4 w-full text-blue-500" />
-          </p>
-
-          <p className="motion-rise mt-8 max-w-[30rem] text-lg text-white/80" style={stagger(4)}>
-            {hero.copy}
-          </p>
-
-          <div className="motion-rise mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4" style={stagger(5)}>
+        {/* Bottom band: statement, copy, actions */}
+        <div
+          className="motion-rise mt-14 grid gap-8 border-t border-white/15 pt-10 md:grid-cols-12 md:items-end md:gap-grid"
+          style={stagger(4)}
+        >
+          <p className="type-heading text-h3 text-white md:col-span-4">{hero.tagline}</p>
+          <p className="max-w-[28rem] text-base text-white/70 md:col-span-4">{hero.copy}</p>
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-4 md:col-span-4 md:justify-end">
             <Button href={hero.primaryCta.href} size="lg" arrow>
               {hero.primaryCta.label}
             </Button>
-            <Button href={hero.secondaryCta.href} variant="secondary" size="lg">
+            <Button href={hero.secondaryCta.href} variant="ghost" arrow>
               {hero.secondaryCta.label}
             </Button>
           </div>
-        </div>
-
-        {/* Side detail: number + scroll cue */}
-        <div
-          className="motion-rise absolute bottom-16 right-[var(--gutter)] hidden flex-col items-center gap-5 md:bottom-20 md:flex"
-          style={stagger(6)}
-          aria-hidden="true"
-        >
-          <span className="type-script -rotate-6">No. {site.number}</span>
-          <span className="type-label [writing-mode:vertical-rl] text-white/60">Scroll</span>
-          <span className="relative h-16 w-px overflow-hidden bg-white/15">
-            <span className="motion-scroll-cue absolute inset-0 bg-ice-300" />
-          </span>
         </div>
       </div>
     </section>

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/PageHeader";
 import { Coaching } from "@/components/home/Coaching";
-import { Button, PlaceholderTag, Reveal, SectionHeading } from "@/design-system";
+import { images } from "@/content/site";
+import { Button, Eyebrow, PlaceholderTag, Reveal } from "@/design-system";
 
 export const metadata: Metadata = { title: "Coaching" };
 
@@ -19,29 +20,39 @@ export default function CoachingPage() {
         eyebrow="Coaching"
         title={
           <>
-            Private baseball <span className="text-ice-300">coaching.</span>
+            Private baseball <span className="text-accent">coaching.</span>
           </>
         }
         intro="Pitching, hitting and fielding: technique, performance and the mental side of the game, coached by a professional player."
+        image={images.coachingLead}
       />
 
       <Coaching />
 
-      <section className="section-y">
+      <section className="tone-light section-y">
         <div className="container-page">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <SectionHeading eyebrow="Sessions" title="How it works" size="h3" />
+          <Reveal className="flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <Eyebrow>Sessions</Eyebrow>
+              <h2 className="type-display mt-8 text-h2 text-strong">How it works</h2>
+            </div>
             <PlaceholderTag>Formats and pricing to be confirmed</PlaceholderTag>
-          </div>
-          <ul className="mt-12 grid gap-grid md:grid-cols-3">
+          </Reveal>
+          <ol className="mt-16 grid border-t border-line/15 md:grid-cols-3">
             {formats.map((f, i) => (
-              <Reveal as="li" key={f.title} index={i} className="border-t border-blue-500 bg-navy-800/40 p-8">
-                <h3 className="type-display text-h3 text-white">{f.title}</h3>
-                <p className="mt-3 text-neutral-400">{f.copy}</p>
+              <Reveal
+                as="li"
+                key={f.title}
+                index={i}
+                className="border-b border-line/15 py-10 md:border-b-0 md:border-l md:px-8 md:py-12 md:first:border-l-0 md:first:pl-0"
+              >
+                <span className="type-label text-accent">0{i + 1}</span>
+                <h3 className="type-display mt-6 text-h3 text-strong">{f.title}</h3>
+                <p className="mt-4 text-muted">{f.copy}</p>
               </Reveal>
             ))}
-          </ul>
-          <div className="mt-12">
+          </ol>
+          <div className="mt-14">
             <Button href="/contact#coaching" size="lg" arrow>
               Coaching enquiries
             </Button>

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-/** Small uppercase label with a leading fine rule, optionally numbered. */
+/** Small uppercase label, optionally numbered. Quiet by design. */
 export function Eyebrow({
   children,
   index,
@@ -11,9 +11,9 @@ export function Eyebrow({
   className?: string;
 }) {
   return (
-    <p className={`type-label flex items-center gap-3 text-ice-300 ${className}`}>
-      {index && <span className="text-blue-400">{index}</span>}
-      <span aria-hidden="true" className="h-px w-8 bg-blue-500" />
+    <p className={`type-label flex items-center gap-3 text-muted ${className}`}>
+      {index && <span className="text-accent">{index}</span>}
+      {index && <span aria-hidden="true" className="h-px w-6 bg-line/30" />}
       <span>{children}</span>
     </p>
   );

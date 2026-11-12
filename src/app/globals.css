@@ -30,11 +30,40 @@
   :focus-visible {
     outline: 2px solid var(--color-focus);
     outline-offset: 3px;
-    border-radius: var(--radius-sm);
   }
 }
 
 @layer components {
+  /* Section tones: set the colours components read (see tokens.css) */
+  .tone-dark {
+    --base: var(--c-ink-900);
+    --fg: var(--c-paper);
+    --fg-strong: var(--c-white);
+    --muted: var(--c-stone-400);
+    --line: var(--c-white);
+    --accent: var(--c-blue-400);
+    --color-focus: rgb(var(--c-blue-400));
+    background-color: rgb(var(--c-ink-900));
+    color: rgb(var(--fg));
+  }
+
+  .tone-deep {
+    --base: var(--c-ink-950);
+    background-color: rgb(var(--c-ink-950));
+  }
+
+  .tone-light {
+    --base: var(--c-paper);
+    --fg: var(--c-ink-900);
+    --fg-strong: var(--c-ink-950);
+    --muted: var(--c-stone-600);
+    --line: var(--c-ink-950);
+    --accent: var(--c-blue-600);
+    --color-focus: rgb(var(--c-blue-600));
+    background-color: rgb(var(--c-paper));
+    color: rgb(var(--fg));
+  }
+
   /* Page container: max width + gutter, shared by every section */
   .container-page {
     width: 100%;
@@ -72,25 +101,44 @@
     text-transform: uppercase;
   }
 
+  .type-lead {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-light);
+    line-height: 1.5;
+  }
+
   .type-script {
     font-family: var(--font-script);
     font-size: var(--text-script);
     font-weight: var(--weight-semibold);
     line-height: 1;
-    color: var(--color-highlight);
   }
 
-  /* Outline display type */
-  .type-outline {
-    color: transparent;
-    -webkit-text-stroke: 1px rgb(var(--c-ice-300) / 0.55);
+  /* Text link with an underline that draws in on hover */
+  .link-draw {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size var(--duration-slow) var(--ease-out), color var(--duration-fast);
+  }
+  .link-draw:hover,
+  .link-draw:focus-visible,
+  .group:hover .link-draw,
+  .group\/btn:hover .link-draw {
+    background-size: 100% 1px;
   }
 
-  /* Placeholder media: navy field with faint stitch texture */
+  /* Shared photo grade (see --photo-filter in tokens.css) */
+  .photo-grade img {
+    filter: var(--photo-filter);
+  }
+
+  /* Photo slot still waiting for its image */
   .media-placeholder {
-    background-color: rgb(var(--c-navy-800));
+    background-color: rgb(var(--c-ink-800));
     background-image:
-      radial-gradient(120% 80% at 20% 0%, rgb(var(--c-blue-500) / 0.28), transparent 60%),
-      repeating-linear-gradient(135deg, rgb(var(--c-white) / 0.035) 0 1px, transparent 1px 14px);
+      radial-gradient(110% 90% at 80% 10%, rgb(var(--c-white) / 0.06), transparent 60%),
+      linear-gradient(180deg, transparent 40%, rgb(var(--c-ink-950) / 0.6));
   }
 }

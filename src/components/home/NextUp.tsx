@@ -1,59 +1,62 @@
 import Link from "next/link";
-import { nextUp } from "@/content/site";
-import { ArrowIcon, Eyebrow, MediaPlaceholder, PlaceholderTag, Reveal } from "@/design-system";
+import { images, nextUp } from "@/content/site";
+import { ArrowIcon, Eyebrow, PlaceholderTag, Reveal } from "@/design-system";
+import { Photo } from "@/design-system/components/Photo";
 
 export function NextUp() {
   const [feature, ...rest] = nextUp.items;
+  const [featureImage, ...restImages] = images.nextUp;
 
   return (
-    <section aria-labelledby="nextup-title" className="section-y">
+    <section aria-labelledby="nextup-title" className="tone-light section-y">
       <div className="container-page">
-        <Reveal className="flex items-end justify-between gap-6">
+        <Reveal className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <Eyebrow index="03">{nextUp.eyebrow}</Eyebrow>
-            <h2 id="nextup-title" className="type-display mt-5 text-h2 text-white">
+            <h2 id="nextup-title" className="type-display mt-8 text-h2 text-strong">
               {nextUp.heading}
             </h2>
           </div>
           <PlaceholderTag>Dummy content</PlaceholderTag>
         </Reveal>
 
-        <div className="mt-12 grid gap-grid lg:grid-cols-12">
-          {/* Feature */}
-          <Reveal className="lg:col-span-7">
+        <div className="mt-20 grid gap-x-grid gap-y-20 md:mt-28 lg:grid-cols-12">
+          {/* Feature: large image */}
+          <Reveal className="lg:col-span-8">
             <Link href={feature.href} className="group block">
               <Reveal variant="image">
-                <MediaPlaceholder
-                  caption={feature.kind}
-                  className="aspect-[4/3] transition-transform duration-slow ease-out group-hover:scale-[1.01] lg:aspect-[16/11]"
+                <Photo
+                  {...featureImage}
+                  zoom
+                  sizes="(min-width: 1024px) 65vw, 100vw"
+                  className="aspect-[4/3] lg:aspect-[16/10]"
                 />
               </Reveal>
-              <div className="mt-6 flex items-start justify-between gap-6">
+              <div className="mt-8 flex items-start justify-between gap-6">
                 <div>
-                  <p className="type-label text-blue-400">{feature.meta}</p>
-                  <h3 className="type-heading mt-3 text-h3 text-white transition-colors duration-base group-hover:text-ice-300">
-                    {feature.title}
+                  <p className="type-label text-accent">{feature.kind}</p>
+                  <h3 className="type-display mt-4 text-h3 text-strong">
+                    <span className="link-draw">{feature.title}</span>
                   </h3>
-                  <p className="mt-3 max-w-md text-neutral-400">{feature.copy}</p>
+                  <p className="type-label mt-4 text-muted">{feature.meta}</p>
+                  <p className="mt-4 max-w-md text-muted">{feature.copy}</p>
                 </div>
-                <ArrowIcon className="mt-2 h-6 w-6 shrink-0 text-white/40 transition-[color,transform] duration-base group-hover:-rotate-45 group-hover:text-ice-300" />
+                <ArrowIcon className="mt-2 h-6 w-6 shrink-0 text-fg/40 transition-[color,transform] duration-base group-hover:-rotate-45 group-hover:text-accent" />
               </div>
             </Link>
           </Reveal>
 
-          {/* Stacked secondary items */}
-          <div className="flex flex-col lg:col-span-5">
+          {/* Secondary items, offset down */}
+          <div className="flex flex-col gap-14 lg:col-span-4 lg:pt-32">
             {rest.map((item, i) => (
-              <Reveal key={item.kind} index={i + 1} className="border-t border-rule first:border-t-0 lg:first:border-t">
-                <Link href={item.href} className="group grid grid-cols-[7rem_1fr] gap-5 py-6 sm:grid-cols-[10rem_1fr]">
-                  <MediaPlaceholder className="aspect-square" label="Image" />
-                  <div className="flex flex-col">
-                    <p className="type-label text-blue-400">{item.kind}</p>
-                    <h3 className="type-heading mt-2 text-h4 text-white transition-colors duration-base group-hover:text-ice-300">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-neutral-400">{item.copy}</p>
-                  </div>
+              <Reveal key={item.kind} index={i + 1}>
+                <Link href={item.href} className="group block">
+                  <Photo {...restImages[i]} zoom sizes="(min-width: 1024px) 30vw, 100vw" className="aspect-[3/2]" />
+                  <p className="type-label mt-6 text-accent">{item.kind}</p>
+                  <h3 className="type-heading mt-3 text-h4 text-strong">
+                    <span className="link-draw">{item.title}</span>
+                  </h3>
+                  <p className="mt-3 text-sm text-muted">{item.copy}</p>
                 </Link>
               </Reveal>
             ))}

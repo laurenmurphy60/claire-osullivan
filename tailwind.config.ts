@@ -11,28 +11,34 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: {
-          950: channel("navy-950"),
-          900: channel("navy-900"),
-          800: channel("navy-800"),
-          700: channel("navy-700"),
+        ink: {
+          950: channel("ink-950"),
+          900: channel("ink-900"),
+          800: channel("ink-800"),
+          700: channel("ink-700"),
+        },
+        paper: {
+          DEFAULT: channel("paper"),
+          200: channel("paper-200"),
+        },
+        stone: {
+          400: channel("stone-400"),
+          500: channel("stone-500"),
+          600: channel("stone-600"),
         },
         blue: {
           600: channel("blue-600"),
           500: channel("blue-500"),
           400: channel("blue-400"),
         },
-        ice: {
-          300: channel("ice-300"),
-          100: channel("ice-100"),
-        },
         white: channel("white"),
-        offwhite: channel("offwhite"),
-        charcoal: channel("charcoal"),
-        neutral: {
-          400: channel("neutral-400"),
-          600: channel("neutral-600"),
-        },
+        // Tone-aware: follow the nearest .tone-dark / .tone-light section
+        canvas: "rgb(var(--base) / <alpha-value>)",
+        fg: "rgb(var(--fg) / <alpha-value>)",
+        strong: "rgb(var(--fg-strong) / <alpha-value>)",
+        muted: "rgb(var(--muted) / <alpha-value>)",
+        line: "rgb(var(--line) / <alpha-value>)",
+        accent: "rgb(var(--accent) / <alpha-value>)",
         rule: "var(--color-rule)",
       },
       fontFamily: {
